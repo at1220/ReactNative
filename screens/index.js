@@ -4,4 +4,7 @@ import Register from './Register';
 import CarList from './Carlist/CarList';
 import ProductGridView from './ProductGrid/ProductGridView';
 import Settings from './Settings';
-export {Welcome, Login, Register, CarList, ProductGridView, Settings};
+import Profile from './profile';
+import Chat from './Chat/chat';
+import Messenger from './Messenger/Messenger';
+export {Welcome, Login, Register, CarList, ProductGridView, Settings,Profile,Chat,Messenger};

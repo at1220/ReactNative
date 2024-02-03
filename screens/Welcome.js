@@ -39,6 +39,10 @@ function Welcome(props) {
     {name: 'Tài xế', isSelectedd: true},
     {name: 'Quản lí', isSelectedd: false},
   ]);
+  //navigation
+  const {navigation, route} = props
+  //function od navigate to/back
+  const {navigate, goBack} = navigation
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -66,22 +70,29 @@ function Welcome(props) {
           {accountTypes.map(accountType => (
             <UIButton
               onPresss={() => {
+
                 setAccountTypes(
                   accountTypes.map(eachAccountTypes => {
                     return {
                       ...eachAccountTypes,
                       isSelectedd: eachAccountTypes.name == accountType.name,
+                    
                     };
                   }),
                 );
               }}
+              key={accountType.name}
               title={accountType.name}
               isSelected={accountType.isSelectedd}
             />
           ))}
         </View>
         <View style={styles.btnLogin}>
-          <UIButton title={'Đăng nhập'}></UIButton>
+          <UIButton title={'Đăng nhập'}
+          onPresss={() => {
+            navigate('Login')
+          }}
+           ></UIButton>
         </View>
       </ImageBackground>
     </View>

@@ -1,7 +1,7 @@
 import {TouchableOpacity, StyleSheet, Text} from 'react-native';
 import {ArchiveTick} from 'iconsax-react-native';
 import React from 'react';
-import {color} from '../constant';
+import {colors} from '../constant';
 function UIButton(props) {
   const {onPresss, title, isSelected} = props;
   return (
@@ -17,7 +17,7 @@ function UIButton(props) {
       <Text
         style={{
           fontSize: 20,
-          color: isSelected == true ? color.primary : 'white',
+          color: isSelected == true ? colors.primary : 'white',
           fontWeight: 'bold',
         }}>
         {title}

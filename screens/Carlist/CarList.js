@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {Filter, SearchNormal} from 'iconsax-react-native';
 import CarItem from './CarItem';
-import {color, fontsize} from '../../constant';
+import {colors, fontsize} from '../../constant';
 function CarList(props) {
   //list of car = state
   const [cars, setCars] = useState([
@@ -130,7 +130,7 @@ function CarList(props) {
             setSearchText(text);
           }}
           style={{
-            backgroundColor: color.color1,
+            backgroundColor: colors.color1,
             borderRadius: 15,
             height: 40,
             flex: 1,
@@ -140,7 +140,7 @@ function CarList(props) {
             color: 'black',
           }}
         />
-        <Filter size={30} color={color.disable} />
+        <Filter size={30} color={colors.disable} />
       </View>
 
       <View style={{height: 100}}>
@@ -181,7 +181,7 @@ function CarList(props) {
                 />
                 <Text
                   style={{
-                    color: color.primary,
+                    color: colors.primary,
                     fontSize: fontsize.h4,
                   }}>
                   {item.name}
@@ -226,7 +226,7 @@ function CarList(props) {
             alignContent: 'center',
             alignItems: 'center',
           }}>
-          <Text style={{fontSize: fontsize.h3, color: color.disable}}>
+          <Text style={{fontSize: fontsize.h3, color: colors.disable}}>
             Không tìm thấy xe
           </Text>
           <SearchNormal size={20} color="gray" marginTop={3} />

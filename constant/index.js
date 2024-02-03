@@ -1,5 +1,5 @@
 import images from './images';
 import icons from './icons';
-import color from './color';
+import colors from './colors';
 import fontsize from './fontsize';
-export {images, icons, color, fontsize};
+export {images, icons, colors, fontsize};

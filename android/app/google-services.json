@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "272719833616",
+    "project_id": "react-native-7a531",
+    "storage_bucket": "react-native-7a531.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272719833616:android:f1505208ef5d9c1088f895",
+        "android_client_info": {
+          "package_name": "com.trainningapp1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEb5BIlLZMP4vVsZDnPIdY6Bsvr2nxAjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

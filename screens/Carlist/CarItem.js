@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Image, Text, View, TouchableOpacity} from 'react-native';
-import {images, color, fontsize, icons} from '../../constant';
+import {images, colors, fontsize, icons} from '../../constant';
 
 function _getColorFromStatus(status) {
   //   if (status.toLowerCase().trim() == 'đang chạy') {
@@ -11,12 +11,12 @@ function _getColorFromStatus(status) {
   //     return color.sold;
   //   }
   return status.toLowerCase().trim() == 'đang chạy'
-    ? color.active
+    ? colors.active
     : status.toLowerCase().trim() == 'nghỉ'
-    ? color.rest
+    ? colors.rest
     : status.toLowerCase().trim() == 'đã bán'
-    ? color.sold
-    : color.primary;
+    ? colors.sold
+    : colors.primary;
 }
 function CarItem(props) {
   let {name, status, price, payload, url} = props.car;

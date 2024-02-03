@@ -9,7 +9,7 @@ import {
   TextInput,
 } from 'react-native';
 import {Heart, Star1} from 'iconsax-react-native';
-import {color, fontsize} from '../../constant';
+import {colors, fontsize} from '../../constant';
 function Rating(props) {
   const {numberOfRating} = props;
   return (
@@ -18,7 +18,7 @@ function Rating(props) {
         <Star1
           key={`${item}`}
           size={18}
-          color={item <= numberOfRating - 1 ? color.rating : color.disable}
+          color={item <= numberOfRating - 1 ? colors.rating : colors.disable}
           marginRight={1}
           variant={item <= numberOfRating - 1 ? 'Bold' : 'Outline'}
         />

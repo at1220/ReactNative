@@ -9,7 +9,7 @@ import {
   TextInput,
 } from 'react-native';
 import {Heart, Star1} from 'iconsax-react-native';
-import {color, fontsize} from '../../constant';
+import {colors, fontsize} from '../../constant';
 import Rating from './Rating';
 function ProductItem(props) {
   const {item, index, onPress} = props;
@@ -28,7 +28,7 @@ function ProductItem(props) {
         marginRight: 10,
         marginBottom: 5,
         borderWidth: 1,
-        borderColor: color.disable,
+        borderColor: colors.disable,
       }}>
       <View style={{flexDirection: 'row', marginTop: 15}}>
         <Image
@@ -57,7 +57,7 @@ function ProductItem(props) {
       <Text
         style={{
           marginTop: 8,
-          color: color.primary,
+          color: colors.primary,
           fontSize: fontsize.h4,
           textAlign: 'center',
           fontWeight: 'bold',
@@ -83,8 +83,8 @@ function ProductItem(props) {
             size={20}
             color={
               item.isSaved == undefined || item.isSaved == false
-                ? color.disable
-                : color.love
+                ? colors.disable
+                : colors.love
             }
             marginLeft={3}
             variant={
@@ -98,8 +98,8 @@ function ProductItem(props) {
               fontSize: 15,
               color:
                 item.isSaved == undefined || item.isSaved == false
-                  ? color.disable
-                  : color.love,
+                  ? colors.disable
+                  : colors.love,
               textAlign: 'center',
             }}>
             {' '}

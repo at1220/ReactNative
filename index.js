@@ -5,15 +5,16 @@
 import {AppRegistry} from 'react-native';
 import {name as appName} from './app.json';
 import React from 'react';
-import {
-  Welcome,
-  Login,
-  Register,
-  CarList,
-  ProductGridView,
-  Settings,
-} from './screens';
-
+// import {
+//   Welcome,
+//   Login,
+//   Register,
+//   CarList,
+//   ProductGridView,
+//   Settings,
+// } from './screens';
+// import UITab from './navigation/UITab';
+import App from './navigation/App';
 let fakedProducts = [
   {
     productName: 'ip 13',
@@ -32,4 +33,4 @@ let fakedProducts = [
     year: 2018,
   },
 ];
-AppRegistry.registerComponent(appName, () => () => <Settings />);
+AppRegistry.registerComponent(appName, () => () => <App />);

@@ -10,7 +10,7 @@ import {
   KeyboardAvoidingView,
   Keyboard,
 } from 'react-native';
-import {images, color, fontsize, icons} from '../constant';
+import {images, colors, fontsize, icons} from '../constant';
 import {isValidUserName, isValidPassword} from '../utilies/Validations';
 function Login(props) {
   const [keyboardIsShown, setKeyboardIsShown] = useState(false);
@@ -18,8 +18,8 @@ function Login(props) {
   const [errorUserName, setErrorUserName] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
   //state to store email/password
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
+  const [userName, setUserName] = useState('tuan');
+  const [password, setPassword] = useState('123123');
   const isValidation = () =>
     userName.length > 0 &&
     password.length > 0 &&
@@ -35,6 +35,10 @@ function Login(props) {
       setKeyboardIsShown(false);
     });
   });
+  //navigation
+  const {navigation, route} = props
+  //function od navigate to/back
+  const {navigate, goBack} = navigation
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -75,7 +79,7 @@ function Login(props) {
         <View style={{marginHorizontal: 15}}>
           <Text
             style={{
-              color: color.primary,
+              color: colors.primary,
               fontSize: fontsize.h3,
             }}>
             Tên đăng nhập:
@@ -95,12 +99,13 @@ function Login(props) {
               setUserName(username);
             }}
             placeholder="nhập tài khoản *"
+            value={userName}
           />
 
           <View
             style={{
               height: 0.5,
-              backgroundColor: color.primary,
+              backgroundColor: colors.primary,
               width: '100%',
               marginBottom: 5,
             }}
@@ -113,7 +118,7 @@ function Login(props) {
         <View style={{marginHorizontal: 15}}>
           <Text
             style={{
-              color: color.primary,
+              color: colors.primary,
               fontSize: fontsize.h3,
             }}>
             Mật khẩu:
@@ -129,12 +134,13 @@ function Login(props) {
             }}
             secureTextEntry={true}
             placeholder="nhập mật khẩu *"
+            value={password}
           />
 
           <View
             style={{
               height: 0.5,
-              backgroundColor: color.primary,
+              backgroundColor: colors.primary,
               width: '100%',
               marginBottom: 5,
             }}
@@ -148,10 +154,12 @@ function Login(props) {
       <View style={{flex: 15}}>
         <TouchableOpacity
           disabled={isValidation() == false}
-          onPress={() => alert(`username = ${userName} pass = ${password}`)}
+          onPress={() => {
+            navigate('UITab')
+          }}
           style={{
             backgroundColor:
-              isValidation() == true ? color.color1 : color.disable,
+              isValidation() == true ? colors.color1 : colors.disable,
             alignItems: 'center',
             justifyContent: 'center',
             width: '50%',
@@ -170,14 +178,14 @@ function Login(props) {
         </TouchableOpacity>
         {keyboardIsShown == false && (
           <TouchableOpacity
-            onPress={() => alert('forget pass')}
+            onPress={() => navigate('Register')}
             style={{padding: 20}}>
             <Text
               style={{
                 padding: 8,
                 fontSize: fontsize.h4,
                 fontWeight: 'bold',
-                color: color.textcolor,
+                color: colors.textcolor,
                 alignSelf: 'center',
               }}>
               Quên mật khẩu?

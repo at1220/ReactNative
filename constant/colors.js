@@ -9,4 +9,8 @@ export default {
   sold: '#991111',
   love: '#ed3939',
   rating: '#c9c30e',
+  backgray:'#e9ebf0',
+  tabcolor:'#2d95c2',
+  space:'#dedbd5',
+  messMe:'#729cf7'
 };

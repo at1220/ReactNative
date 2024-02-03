@@ -11,22 +11,27 @@ import {
   Keyboard,
   ScrollView,
 } from 'react-native';
-import {images, color, fontsize, icons} from '../constant';
+import {images, colors, fontsize, icons} from '../constant';
 import {isValidUserName, isValidPassword} from '../utilies/Validations';
+import {auth,firebaseDatabase,createUserWithEmailAndPassword} from '../firebase/firebase'
 function Register(props) {
   const [keyboardIsShown, setKeyboardIsShown] = useState(false);
   //state form valydating
   const [errorUserName, setErrorUserName] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
+  const [errorRePassword, setErrorRePassword] = useState('');
   //state to store email/password
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
+  const [userName, setUserName] = useState('tuan22ee');
+  const [password, setPassword] = useState('tuan123');
+  const [repassword, setRePassword] = useState('tuan123');
   const isValidation = () =>
     userName.length > 0 &&
     password.length > 0 &&
     isValidUserName(userName) == true &&
-    isValidPassword(password) == true;
+    isValidPassword(password) == true &&
+    repassword == password
   useEffect(() => {
+    //const xx = auth
     Keyboard.addListener('keyboardDidShow', () => {
       //alert('key boar');
       setKeyboardIsShown(true);
@@ -36,6 +41,7 @@ function Register(props) {
       setKeyboardIsShown(false);
     });
   });
+ 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -74,7 +80,7 @@ function Register(props) {
       <View
         style={{
           flex: 50,
-          backgroundColor: color.background,
+          backgroundColor: colors.background,
           borderRadius: 20,
           marginHorizontal: 10,
           padding: 10,
@@ -83,7 +89,7 @@ function Register(props) {
         <View style={{marginHorizontal: 5}}>
           <Text
             style={{
-              color: color.primary,
+              color: colors.primary,
               fontSize: fontsize.h3,
             }}>
             Tên đăng nhập:
@@ -102,6 +108,7 @@ function Register(props) {
               );
               setUserName(username);
             }}
+            value={userName}
             placeholder="nhập tài khoản *"
             style={{backgroundColor: 'white', borderRadius: 15}}
           />
@@ -109,7 +116,7 @@ function Register(props) {
           <View
             style={{
               height: 1,
-              backgroundColor: color.primary,
+              backgroundColor: colors.primary,
               width: '100%',
             }}
           />
@@ -121,7 +128,7 @@ function Register(props) {
         <View style={{marginHorizontal: 5}}>
           <Text
             style={{
-              color: color.primary,
+              color: colors.primary,
               fontSize: fontsize.h3,
             }}>
             Mật khẩu:
@@ -133,43 +140,43 @@ function Register(props) {
                   ? ''
                   : 'Mật khẩu phải từ 6 trở lên',
               );
+              
               setPassword(pass);
             }}
             secureTextEntry={true}
+            value={password}
             placeholder="nhập mật khẩu *"
             style={{backgroundColor: 'white', borderRadius: 15}}
           />
-
+        <Text style={{color: 'red', fontSize: fontsize.h4}}>
+            {errorPassword}
+          </Text>
           <View
             style={{
               height: 1,
-              backgroundColor: color.primary,
+              backgroundColor: colors.primary,
               width: '100%',
             }}
           />
-          <Text style={{color: 'red', fontSize: fontsize.h4}}>
-            {errorPassword}
-          </Text>
         </View>
         {/* input Re-password */}
         <View style={{marginHorizontal: 5}}>
           <Text
             style={{
-              color: color.primary,
+              color: colors.primary,
               fontSize: fontsize.h3,
             }}>
             Xác nhận mật khẩu:
           </Text>
           <Text style={{color: 'red', fontSize: fontsize.h4}}>
-            {errorPassword}
+            {errorRePassword}
           </Text>
           <TextInput
-            onChangeText={pass => {
-              setErrorPassword(
-                isValidPassword(pass) == true ? '' : 'Mật khẩu không trùng',
-              );
-              setPassword(pass);
+            onChangeText={text => {
+              setRePassword(text)
             }}
+            onBlur={() => setErrorRePassword( password === repassword ? '' : 'mật khẩu không trùng')}
+            value={repassword}
             secureTextEntry={true}
             placeholder="Xác nhận mật khẩu *"
             style={{backgroundColor: 'white', borderRadius: 15}}
@@ -178,7 +185,7 @@ function Register(props) {
           <View
             style={{
               height: 1,
-              backgroundColor: color.primary,
+              backgroundColor: colors.primary,
               width: '100%',
               marginBottom: 5,
             }}
@@ -192,7 +199,7 @@ function Register(props) {
           onPress={() => alert(`username = ${userName} pass = ${password}`)}
           style={{
             backgroundColor:
-              isValidation() == true ? color.color1 : color.disable,
+              isValidation() == true ? colors.color1 : colors.disable,
             alignItems: 'center',
             justifyContent: 'center',
             width: '50%',
